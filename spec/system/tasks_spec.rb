@@ -51,10 +51,14 @@ describe 'task managemant function', type: :system do
     before do
       visit new_task_path
       fill_in '名称', with: task_name
-      click_button '登録する'
+      click_button '確認'
     end
 
     context 'when task_name is inputed' do
+      before do
+        click_button '登録'
+      end
+
       it 'normally registered' do
         expect(page).to have_selector '.alert-success', text: 'task_1'
       end
