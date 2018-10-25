@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 describe 'ユーザー管理機能', type: :system do
-  let(:admin_user) { FactoryBot.create(:admin_user) }
-  let(:not_admin_user) { FactoryBot.create(:user) }
+  let(:admin_user) { create(:admin_user) }
+  let(:not_admin_user) { create(:user) }
 
   before do
     visit login_path

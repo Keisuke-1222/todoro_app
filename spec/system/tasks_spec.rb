@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 describe 'task managemant function', type: :system do
-  let(:user_a) { FactoryBot.create(:user, name: 'user_a', email: 'a@example.com') }
-  let(:user_b) { FactoryBot.create(:user, name: 'user_b', email: 'b@example.com') }
-  let!(:task_a) { FactoryBot.create(:task, name: 'first task', user: user_a) }
+  let(:user_a) { create(:user, name: 'user_a', email: 'a@example.com') }
+  let(:user_b) { create(:user, name: 'user_b', email: 'b@example.com') }
+  let!(:task_a) { create(:task, name: 'first task', user: user_a) }
 
   before do
     visit login_path

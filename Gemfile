@@ -49,6 +49,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-byebug'
   gem 'factory_bot_rails', '~> 4.11'
+  gem 'spring-commands-rspec'
 end
 
 group :development do
