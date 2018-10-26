@@ -52,7 +52,36 @@ describe 'ユーザー管理機能', type: :system do
         expect(page.current_path).to eq root_path
         expect(page).not_to have_content admin_user.name
       end
+    end
+  end
 
+  describe 'ユーザー登録' do
+    before do
+      visit new_admin_user_path
+    end
+
+    context '管理ユーザーの場合' do
+      let(:user) { admin_user }
+
+      before do
+        fill_in '名前', with: 'new user'
+        fill_in 'メールアドレス', with: 'new_user@example.com'
+        fill_in 'パスワード', with: 'password'
+        fill_in 'パスワード（確認）', with: 'password'
+        click_button '登録する'
+      end
+
+      it 'ユーザー一覧ページに新規ユーザーが表示されている' do
+        expect(page.current_path).to eq admin_users_path
+        expect(page).to have_content 'new user'
+      end
+    end
+
+    context '管理ユーザーでない場合' do
+      let(:user) { not_admin_user }
+      it 'トップページが表示される' do
+        expect(page.current_path).to eq root_path
+      end
     end
   end
 end
