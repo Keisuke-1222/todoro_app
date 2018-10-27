@@ -74,6 +74,7 @@ describe 'ユーザー管理機能', type: :system do
       it 'ユーザー一覧ページに新規ユーザーが表示されている' do
         expect(page.current_path).to eq admin_users_path
         expect(page).to have_content 'new user'
+        expect(page).to have_selector '.alert-success', text: 'new user'
       end
     end
 
